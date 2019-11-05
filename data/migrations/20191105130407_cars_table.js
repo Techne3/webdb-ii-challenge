@@ -1,0 +1,21 @@
+
+exports.up = function(knex) {
+  return knex.schema.createTable('cars', function(table) {
+      // adds a primary kye, called 'id' as an auto increment integer
+      table.increment();
+
+      table.string('VIN',128);
+      table.string('make',64).notNullable();
+      table.string('model',128).notNullable();
+      table.integer('mileage',64)
+      table.string('transmission_type',64)
+      table.string('title_status')
+      
+
+    table.timestamps(true, true);
+  }) 
+};
+
+exports.down = function(knex) {
+  return knex.schema.dropTableIfExists('cars')
+};
