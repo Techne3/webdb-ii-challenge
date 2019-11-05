@@ -2,12 +2,12 @@
 exports.up = function(knex) {
   return knex.schema.createTable('cars', function(table) {
       // adds a primary kye, called 'id' as an auto increment integer
-      table.increment();
+      table.increments();
 
-      table.string('VIN',128);
+      table.string('VIN',128).unique().notNullable();
       table.string('make',64).notNullable();
       table.string('model',128).notNullable();
-      table.integer('mileage',64)
+      table.float('mileage',64).notNullable();
       table.string('transmission_type',64)
       table.string('title_status')
       
